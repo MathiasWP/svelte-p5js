@@ -16,61 +16,84 @@ Components used to simplify the p5.js API.
 
 ### Rendering
 
-- Canvas (createCanvas)
+- `<Canvas w={number} h={number}/>` (createCanvas)
 
 ### Structure
 
-- Draw
-- Setup
-- P5
+- `<Draw />`
+- `<Setup />`
+- `<P5 />`
 
 ### Color
 
-- Background
-- Fill
+- `<Background />`
+- `<Fill />`
 
 ### Shape
 
-- Circle
-- Ellipse
+- `<Circle />`
+- `<Ellipse />`
 
-## Currently supported events (on the P5 component)
+## Currently supported events (available on the `<P5 />` component)
 
 All events provide the current instance via `event.detail.instance`.
 
 ### Acceleration events
 
-- `setMoveThreshold`
-- `setShakeThreshold`
-- `deviceMoved`
-- `deviceTurned`
-- `deviceShaken`
+- `on:setMoveThreshold`
+- `on:setShakeThreshold`
+- `on:deviceMoved`
+- `on:deviceTurned`
+- `on:deviceShaken`
 
 ### Keyboard events
 
-- `keyPressed`
-- `keyReleased`
-- `keyTyped`
-- `keyIsDown`
+- `on:keyPressed`
+- `on:keyReleased`
+- `on:keyTyped`
+- `on:keyIsDown`
 
 ### Mouse events
 
-- `mousePressed`
-- `mouseMoved`
-- `mouseDragged`
-- `mousePressed`
-- `mouseReleased`
-- `mouseClicked`
-- `doubleClicked`
-- `mouseWheel`
-- `requestPointerLock`
-- `exitPointerLock`
+- `on:mousePressed`
+- `on:mouseMoved`
+- `on:mouseDragged`
+- `on:mousePressed`
+- `on:mouseReleased`
+- `on:mouseClicked`
+- `on:doubleClicked`
+- `on:mouseWheel`
+- `on:requestPointerLock`
+- `on:exitPointerLock`
 
 ### Touch events
 
-- `touchStarted`
-- `touchMoved`
-- `touchEnded`
+- `on:touchStarted`
+- `on:touchMoved`
+- `on:touchEnded`
+
+## Currently supported constants (available on the `<P5 />` component)
+
+### Keyboard constants
+
+- `keyIsPressed`
+- `key`
+- `keyCode`
+
+### Mouse constants
+
+- `movedX`
+- `movedY`
+- `mouseX`
+- `mouseY`
+- `pmouseX`
+- `pmouseY`
+- `winMouseX`
+- `winMouseY`
+- `pwinMouseX`
+- `pwinMouseY`
+- `mouseButton`
+- `mouseIsPressed`
 
 ## Example usage
 
