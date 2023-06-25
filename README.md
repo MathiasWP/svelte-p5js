@@ -2,13 +2,16 @@
 
 A svelte wrapper for the [p5.js](https://p5js.org/) library.
 
+```
+npm install svelte-p5js
+```
+
 All props and variables are an exact copy of the original library.
 
-## Run locally
+<br />
 
-1. `npm install`
-2. `npm run dev`
-3. Use the `src/routes/+page.svelte` as a playground
+## Alternatives
+- https://github.com/tonyketcham/p5-svelte
 
 ## Currently spported components
 
@@ -148,3 +151,9 @@ The P5 component is the only required component. It sets up a p5 instance and mu
 	</Draw>
 </P5>
 ```
+
+## Run locally
+
+1. `npm install`
+2. `npm run dev`
+3. Use the `src/routes/+page.svelte` as a playground
