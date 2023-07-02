@@ -10,7 +10,7 @@
 	let mouseButton;
 </script>
 
-<a href="/">Main</a>
+<a href="/playground/other">other</a>
 <P5
 	bind:p5
 	draw={() => {

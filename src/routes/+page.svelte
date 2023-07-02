@@ -1,35 +1,14 @@
 <script>
-	import { Background, Clear, Canvas, Ellipse, Circle, P5, Setup, Draw, Fill } from '$lib/index.js';
-
-	let x = 0;
-	let y = 0;
-	let d = 10;
-	let w = 800;
-	let h = 800;
-	let p5;
-	let mouseButton;
+	import P5Logo from './components/atoms/P5Logo.svelte';
+	import SimulateSoftBody from './components/examples/SimulateSoftBody.svelte';
 </script>
 
-<a href="/other">other</a>
-<P5
-	bind:p5
-	draw={() => {
-		x++;
-		y++;
-		d += 0.3;
-	}}
-	bind:mouseButton
-	on:mousePressed={(event) => event.detail.p5.noLoop()}
-	on:mouseReleased={() => p5.loop()}
->
-	<Setup>
-		<Canvas {w} {h} />
-	</Setup>
-	<Draw>
-		<Background v1={105} v2={140} v3={99} color="pink" />
-		<Fill value={x < 100 ? 'blue' : 'cyan'} />
-		<Circle {x} {y} {d} />
-		<Fill value="orange" />
-		<Ellipse {x} {y} w={20} h={20} />
-	</Draw>
-</P5>
+<div class="h-full w-full flex items-center justify-center">
+	<div class="flex flex-col gap-6 z-10">
+		<div class="flex items-end gap-6 text-8xl">svelte<P5Logo height={65} /></div>
+		<p>a safe, fast and declarative Svelte component library for the p5.js library</p>
+	</div>
+	<div class="absolute top-0 left-0 z-0">
+		<SimulateSoftBody />
+	</div>
+</div>
