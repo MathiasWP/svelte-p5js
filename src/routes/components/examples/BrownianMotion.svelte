@@ -1,5 +1,5 @@
 <script>
-	import { Background, Clear, Canvas, Ellipse, Circle, P5, Setup, Draw, Fill } from '$lib/index.js';
+	import { Sketch } from '$lib/index.js';
 
 	let num = 2000;
 	let range = 6;
@@ -47,4 +47,4 @@
 	}
 </script>
 
-<P5 {setup} {draw} />
+<Sketch {setup} {draw} />

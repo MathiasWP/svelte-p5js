@@ -1,5 +1,5 @@
 <script>
-	import { P5 } from '$lib/index.js';
+	import { Sketch } from '$lib/index.js';
 
 	// center point
 	let centerX = 0.0,
@@ -117,4 +117,4 @@
 	}
 </script>
 
-<P5 {setup} {draw} />
+<Sketch {setup} {draw} />
