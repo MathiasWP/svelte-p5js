@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.3 (Jul 2, 2023)
+
+### Improvements
+
+- Prevent memory leakage by running `P5js.remove()` on destroy
+
 ## 0.0.2 (Jul 2, 2023)
 
 ### General refactoring

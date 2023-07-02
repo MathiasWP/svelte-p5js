@@ -1,5 +1,5 @@
 <script>
-	import { createEventDispatcher, onMount, setContext, tick } from 'svelte';
+	import { createEventDispatcher, onDestroy, onMount, setContext, tick } from 'svelte';
 	import { writable } from 'svelte/store';
 
 	/**
@@ -130,6 +130,11 @@
 	 * @type {HTMLDivElement | null}
 	 */
 	let containerEl = null;
+
+	/**
+	 * @type {import('p5') | undefined}
+	 */
+	let p5Class;
 
 	/**
 	 * These stores by the children to set values that are used
@@ -283,7 +288,17 @@
 			};
 		}
 
-		new P5js(sketch, containerEl);
+		p5Class = new P5js(sketch, containerEl);
+	});
+
+	onDestroy(() => {
+		/**
+		 * Prevent memory leak
+		 */
+		if (p5Class) {
+			p5Class.remove();
+		}
+		p5Class = undefined;
 	});
 </script>
 
