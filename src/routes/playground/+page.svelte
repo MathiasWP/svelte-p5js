@@ -1,5 +1,15 @@
 <script>
-	import { Background, Clear, Canvas, Ellipse, Circle, P5, Setup, Draw, Fill } from '$lib/index.js';
+	import {
+		Background,
+		Clear,
+		Canvas,
+		Ellipse,
+		Circle,
+		Sketch,
+		Setup,
+		Draw,
+		Fill
+	} from '$lib/index.js';
 
 	let x = 0;
 	let y = 0;
@@ -11,7 +21,7 @@
 </script>
 
 <a href="/playground/other">other</a>
-<P5
+<Sketch
 	bind:p5
 	draw={() => {
 		x++;
@@ -32,4 +42,4 @@
 		<Fill value="orange" />
 		<Ellipse {x} {y} w={20} h={20} />
 	</Draw>
-</P5>
+</Sketch>

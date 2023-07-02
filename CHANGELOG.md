@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.0.4 (Jul 2, 2023)
+
+### Improvements
+
+- Provide two different ways of working with the p5.js API:
+  - Using the `<P5 />` component that expects a sketch property (same api as https://github.com/tonyketcham/p5-svelte)
+  - Via the `<Sketch />` component (previously named `<P5 />`)with a lot of props, methods and components for working with the API.
+
+### Added following components:
+
+- Sketch (previously named P5)
+
+### Changed following components:
+
+- P5 (expects only a sketch as property)
+
 ## 0.0.3 (Jul 2, 2023)
 
 ### Improvements

@@ -11,4 +11,5 @@ export { default as NoFill } from './components/NoFill.svelte';
 export { default as NoStroke } from './components/NoStroke.svelte';
 export { default as P5 } from './components/P5.svelte';
 export { default as Setup } from './components/Setup.svelte';
+export { default as Sketch } from './components/Sketch.svelte';
 export { default as Stroke } from './components/Stroke.svelte';

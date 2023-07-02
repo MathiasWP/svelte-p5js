@@ -1,6 +1,6 @@
 <script>
 	import { invoke } from '$lib/utils/invoke.js';
-	import { isUndefined } from '$lib/utils/is-defined.js';
+	import { isUndefined } from '$lib/utils/type-checking.js';
 	import { setupComponent } from '$lib/utils/setup-component.js';
 
 	/**

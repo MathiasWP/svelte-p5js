@@ -26,6 +26,7 @@ Components used to simplify the p5.js API.
 
 - `<Draw />`
 - `<Setup />`
+- `<Sketch />`
 - `<P5 />`
 
 ### Setting
