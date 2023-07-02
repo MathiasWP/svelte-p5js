@@ -52,7 +52,7 @@
 		}
 
 		p5.noStroke();
-		frameRate(30);
+		p5.frameRate(30);
 	}
 
 	function draw(p5) {
