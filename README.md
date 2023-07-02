@@ -122,27 +122,27 @@ The P5 component is the only required component. It sets up a p5 instance and mu
 
 	// Bind the current instance of the P5 component to a variable
 	// and get access to the whole API
-	let instance;
+	let p5;
 </script>
 
 <P5
-	bind:instance
+	bind:p5
 	setup={() => console.log('I was fired during setup')}
-	draw={(instance) => {
+	draw={(p5) => {
 		x++;
 		y++;
 		d += 0.3;
 		// Get access to the whole p5js api via the first
 		// and only "instance" parameter
-		instance.mousePressed = () => {
-			instance.noLoop();
+		p5.mousePressed = () => {
+			p5.noLoop();
 		};
 	}}
 	bind:mouseIsPressed
 	on:mouseReleased={(event) => {
 		// Get access to the current instance via the event
 		const instance = event.detail.instance;
-		instance.loop();
+		p5.loop();
 	}}
 >
 	<Setup>
