@@ -6,11 +6,12 @@ A svelte wrapper for the [p5.js](https://p5js.org/) library.
 npm install svelte-p5js
 ```
 
-All props and variables are an exact copy of the original library.
+All props and variables are an exact copy of the names used in the [reference for the p5js library](https://p5js.org/reference/).
 
 <br />
 
 ## Alternatives
+
 - https://github.com/tonyketcham/p5-svelte
 
 ## Currently spported components
@@ -19,7 +20,7 @@ Components used to simplify the p5.js API.
 
 ### Rendering
 
-- `<Canvas w={number} h={number}/>` (createCanvas)
+- `<Canvas />` (createCanvas)
 
 ### Structure
 
@@ -27,10 +28,16 @@ Components used to simplify the p5.js API.
 - `<Setup />`
 - `<P5 />`
 
-### Color
+### Setting
 
 - `<Background />`
+- `<Clear />`
+- `<Erase />`
+- `<NoErase />`
 - `<Fill />`
+- `<NoFill />`
+- `<Stroke />`
+- `<NoStroke />`
 
 ### Shape
 
@@ -144,7 +151,7 @@ The P5 component is the only required component. It sets up a p5 instance and mu
 
 	<Draw>
 		<Background v1={105} v2={140} v3={99} />
-		<Fill v1={205} v2={140} v3={99} />
+		<Fill color="pink" />
 		<Circle {x} {y} {d} />
 		<Fill v1={205} v2={40} v3={99} />
 		<Ellipse {x} {y} w={20} h={20} />

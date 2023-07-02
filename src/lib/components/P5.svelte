@@ -7,17 +7,17 @@
 	 * @type {import('p5')}
 	 * @description The instance of p5 for this component. Is undefined
 	 */
-	export let instance = undefined;
+	export let p5 = undefined;
 
 	/**
 	 * @description The setup() function is called once when the program starts. It's used to define initial environment properties such as screen size and background color and to load media such as images and fonts as the program starts. There can only be one setup() function for each program and it shouldn't be called again after its initial execution.
-	 * @type {(instance: import('p5')) => void | Promise<void>}
+	 * @type {(p5: import('p5')) => void | Promise<void>}
 	 */
 	export let setup = undefined;
 
 	/**
 	 * @description Called directly after setup(), the draw() function continuously executes the lines of code contained inside its block until the program is stopped or noLoop() is called. Note if noLoop() is called in setup(), draw() will still be executed once before stopping. draw() is called automatically and should never be called explicitly.
-	 * @type {(instance: import('p5')) => void | Promise<void>}
+	 * @type {(p5: import('p5')) => void | Promise<void>}
 	 */
 	export let draw = undefined;
 
@@ -127,6 +127,11 @@
 	export let mouseIsPressed = false;
 
 	/**
+	 * @type {HTMLDivElement | null}
+	 */
+	let containerEl = null;
+
+	/**
 	 * These stores by the children to set values that are used
 	 * during setup/draw in the p5 instance below
 	 */
@@ -144,10 +149,13 @@
 		 */
 		const P5js = (await import('p5')).default;
 
-		new P5js((p5) => {
-			instance = p5;
+		/**
+		 * @param {import('p5')} instance
+		 */
+		function sketch(instance) {
+			p5 = instance;
 
-			p5.setup = async () => {
+			instance.setup = async () => {
 				/**
 				 * Waiting a tick so that any of the components mounted
 				 * within the <Setup /> component are added to the setupStore.
@@ -162,29 +170,29 @@
 				}
 			};
 
-			p5.draw = async () => {
+			instance.draw = async () => {
 				/**
 				 * Keyboard constants
 				 */
-				keyIsPressed = p5.keyIsPressed;
-				key = p5.key;
-				keyCode = p5.keyCode;
+				keyIsPressed = instance.keyIsPressed;
+				key = instance.key;
+				keyCode = instance.keyCode;
 
 				/**
 				 * Mouse constants
 				 */
-				movedX = p5.movedX;
-				movedY = p5.movedY;
-				mouseX = p5.mouseX;
-				mouseY = p5.mouseY;
-				pmouseX = p5.pmouseX;
-				pmouseY = p5.pmouseY;
-				winMouseX = p5.winMouseX;
-				winMouseY = p5.winMouseY;
-				pwinMouseX = p5.pwinMouseX;
-				pwinMouseY = p5.pwinMouseY;
-				mouseButton = p5.mouseButton;
-				mouseIsPressed = p5.mouseIsPressed;
+				movedX = instance.movedX;
+				movedY = instance.movedY;
+				mouseX = instance.mouseX;
+				mouseY = instance.mouseY;
+				pmouseX = instance.pmouseX;
+				pmouseY = instance.pmouseY;
+				winMouseX = instance.winMouseX;
+				winMouseY = instance.winMouseY;
+				pwinMouseX = instance.pwinMouseX;
+				pwinMouseY = instance.pwinMouseY;
+				mouseButton = instance.mouseButton;
+				mouseIsPressed = instance.mouseIsPressed;
 
 				if (typeof draw === 'function') await draw(p5);
 				for (const fn of $drawStore.values()) {
@@ -195,86 +203,90 @@
 			/**
 			 * Acceleration events
 			 */
-			p5.setMoveThreshold = () => {
-				dispatch('setMoveThreshold', { instance: p5 });
+			instance.setMoveThreshold = () => {
+				dispatch('setMoveThreshold', { p5: instance });
 			};
-			p5.setShakeThreshold = () => {
-				dispatch('setShakeThreshold', { instance: p5 });
+			instance.setShakeThreshold = () => {
+				dispatch('setShakeThreshold', { p5: instance });
 			};
-			p5.deviceMoved = () => {
-				dispatch('deviceMoved', { instance: p5 });
+			instance.deviceMoved = () => {
+				dispatch('deviceMoved', { p5: instance });
 			};
-			p5.deviceTurned = () => {
-				dispatch('deviceTurned', { instance: p5 });
+			instance.deviceTurned = () => {
+				dispatch('deviceTurned', { p5: instance });
 			};
-			p5.deviceShaken = () => {
-				dispatch('deviceShaken', { instance: p5 });
+			instance.deviceShaken = () => {
+				dispatch('deviceShaken', { p5: instance });
 			};
 
 			/**
 			 * Keyboard events
 			 */
-			p5.keyPressed = () => {
-				dispatch('keyPressed', { instance: p5 });
+			instance.keyPressed = () => {
+				dispatch('keyPressed', { p5: instance });
 			};
-			p5.keyReleased = () => {
-				dispatch('keyReleased', { instance: p5 });
+			instance.keyReleased = () => {
+				dispatch('keyReleased', { p5: instance });
 			};
-			p5.keyTyped = () => {
-				dispatch('keyTyped', { instance: p5 });
+			instance.keyTyped = () => {
+				dispatch('keyTyped', { p5: instance });
 			};
-			p5.keyIsDown = () => {
-				dispatch('keyIsDown', { instance: p5 });
+			instance.keyIsDown = () => {
+				dispatch('keyIsDown', { p5: instance });
 			};
 
 			/**
 			 * Mouse events
 			 */
-			p5.mousePressed = () => {
-				dispatch('mousePressed', { instance: p5 });
+			instance.mousePressed = () => {
+				dispatch('mousePressed', { p5: instance });
 			};
-			p5.mouseMoved = () => {
-				dispatch('mouseMoved', { instance: p5 });
+			instance.mouseMoved = () => {
+				dispatch('mouseMoved', { p5: instance });
 			};
-			p5.mouseDragged = () => {
-				dispatch('mouseDragged', { instance: p5 });
+			instance.mouseDragged = () => {
+				dispatch('mouseDragged', { p5: instance });
 			};
-			p5.mousePressed = () => {
-				dispatch('mousePressed', { instance: p5 });
+			instance.mousePressed = () => {
+				dispatch('mousePressed', { p5: instance });
 			};
-			p5.mouseReleased = () => {
-				dispatch('mouseReleased', { instance: p5 });
+			instance.mouseReleased = () => {
+				dispatch('mouseReleased', { p5: instance });
 			};
-			p5.mouseClicked = () => {
-				dispatch('mouseClicked', { instance: p5 });
+			instance.mouseClicked = () => {
+				dispatch('mouseClicked', { p5: instance });
 			};
-			p5.doubleClicked = () => {
-				dispatch('doubleClicked', { instance: p5 });
+			instance.doubleClicked = () => {
+				dispatch('doubleClicked', { p5: instance });
 			};
-			p5.mouseWheel = () => {
-				dispatch('mouseWheel', { instance: p5 });
+			instance.mouseWheel = () => {
+				dispatch('mouseWheel', { p5: instance });
 			};
-			p5.requestPointerLock = () => {
-				dispatch('requestPointerLock', { instance: p5 });
+			instance.requestPointerLock = () => {
+				dispatch('requestPointerLock', { p5: instance });
 			};
-			p5.exitPointerLock = () => {
-				dispatch('exitPointerLock', { instance: p5 });
+			instance.exitPointerLock = () => {
+				dispatch('exitPointerLock', { p5: instance });
 			};
 
 			/**
 			 * Touch events
 			 */
-			p5.touchStarted = () => {
-				dispatch('touchStarted', { instance: p5 });
+			instance.touchStarted = () => {
+				dispatch('touchStarted', { p5: instance });
 			};
-			p5.touchMoved = () => {
-				dispatch('touchMoved', { instance: p5 });
+			instance.touchMoved = () => {
+				dispatch('touchMoved', { p5: instance });
 			};
-			p5.touchEnded = () => {
-				dispatch('touchEnded', { instance: p5 });
+			instance.touchEnded = () => {
+				dispatch('touchEnded', { p5: instance });
 			};
-		});
+		}
+
+		new P5js(sketch, containerEl);
 	});
 </script>
 
-<slot />
+<div bind:this={containerEl}>
+	<slot />
+</div>

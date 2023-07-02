@@ -1,5 +1,10 @@
 <script>
-	import { getContext } from 'svelte';
+	import { setupComponent } from '$lib/utils/setup-component.js';
+
+	/**
+	 * @see {@link https://p5js.org/reference/#/p5/canvas}
+	 */
+
 	/**
 	 * @description width of the canvas.
 	 * @type {number}
@@ -17,8 +22,7 @@
 	 */
 	export let element = null;
 
-	const context = getContext('context');
-	const id = Symbol();
+	const { context, id } = setupComponent();
 	$: $context.set(id, (ctx) => (element = ctx.createCanvas(w, h)));
 </script>
 

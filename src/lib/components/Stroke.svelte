@@ -4,7 +4,7 @@
 	import { setupComponent } from '$lib/utils/setup-component.js';
 
 	/**
-	 * @see {@link https://p5js.org/reference/#/p5/fill}
+	 * @see {@link https://p5js.org/reference/#/p5/stroke}
 	 */
 
 	/**
@@ -56,11 +56,11 @@
 	const { context, id } = setupComponent();
 	/**
 	 * The fill method has a lot of different parameter combinations:
-	 * 1: fill(v1, v2, v3, [alpha])
-	 * 2: fill(value)
-	 * 3: fill(gray, [alpha])
-	 * 4: fill(values)
-	 * 5: fill(color)
+	 * 1: stroke(v1, v2, v3, [alpha])
+	 * 2: stroke(value)
+	 * 3: stroke(gray, [alpha])
+	 * 4: stroke(values)
+	 * 5: stroke(color)
 	 */
 	$: params = invoke(() => {
 		const params = [];
@@ -80,5 +80,5 @@
 		return params;
 	});
 
-	$: $context.set(id, (ctx) => ctx.fill(...params));
+	$: $context.set(id, (ctx) => ctx.stroke(...params));
 </script>
